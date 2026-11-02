@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sekala menghadirkan cerita seni dan tradisi budaya Bali."
+    />
+    <title>Sekala - Bali dalam Setiap Lekuk Seni</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&amp;display=block"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.26/dist/lenis.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css?v=problem-align-top" />
+    <link rel="stylesheet" href="assets/css/home-return.css" />
+    <link rel="stylesheet" href="assets/css/hero-intro.css?v=z-fix-1" />
+    <link rel="stylesheet" href="assets/css/chatbot.css?v=z-fix-1" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/img/wayang-hero-poster-full.webp"
+      fetchpriority="high"
+    />
+    <script>
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          if (sessionStorage.getItem("sekala:return-home") === "1") {
+            document.documentElement.classList.add("is-returning-home");
+            setTimeout(() => {
+              document.documentElement.classList.remove(
+                "is-returning-home",
+                "is-revealing-home",
+              );
+            }, 4000);
+          } else {
+            document.documentElement.classList.add("is-initial-home");
+          }
+        }
+      } catch {
+        /* Fallback kalau sessionStorage diblokir browser */
+      }
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script
+      src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
+      defer
+    ></script>
+    <script src="assets/js/hero-intro.js" defer></script>
+    <script src="assets/js/script.js?v=faq-smooth" defer></script>
+    <script src="assets/js/beranda.js" defer></script>
+    <script src="assets/js/home-return.js" defer></script>
+    <script type="module" src="assets/js/chatbot.js?v=3d-model-7"></script>
+  </head>
+  <body>
+    <div class="home-return-curtain" aria-hidden="true"></div>
+    <div class="hero-intro-screen" aria-hidden="true">
+      <div class="hero-intro-loader">
+        <div class="hero-intro-cube">
+          <span></span><span></span><span></span> <span></span><span></span
+          ><span></span>
+        </div>
+      </div>
+    </div>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigasi utama">
+        <a class="brand" href="#home" aria-label="Sekala, ke beranda">
+          <span class="material-symbols-outlined brand-icon" aria-hidden="true"
+            >temple_hindu</span
+          >
+          <span>Sekala</span>
+        </a>
+
+        <div class="nav-links" id="mobile-nav-links">
+          <a href="#home" aria-current="page">Beranda</a>
+          <a href="assets/pages/wilayah.html">Wilayah</a>
+          <a href="assets/pages/artikel.html">Artikel</a>
+        </div>
+
+        <a
+          class="button button-dark nav-button"
+          href="assets/pages/wilayah.html"
+          >Jelajahi</a
+        >
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-controls="mobile-nav-links"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-lines" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media">
+          <video
+            id="hero-video"
+            class="hero-video"
+            autoplay
+            muted
+            playsinline
+            loop
+            poster="assets/img/wayang-hero-poster-full.webp"
+            aria-hidden="true"
+          >
+            <source
+              src="assets/video/wayang-hero-full-quality.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+
+        <div class="hero-content container">
+          <h1 id="hero-title">
+            <span class="hero-title-line"
+              ><span class="hero-title-line-inner"
+                >Bali dalam Setiap Lekuk Seni</span
+              ></span
+            >
+            <span class="hero-title-line"
+              ><span class="hero-title-line-inner"
+                >dan Tradisi Budaya.</span
+              ></span
+            >
+          </h1>
+
+          <div class="hero-description">
+            <p>
+              Temukan cerita dan keunikan tradisi budaya Bali yang tetap hidup
+              di tengah perkembangan zaman.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-dark" href="assets/pages/wilayah.html">
+                Jelajahi
+              </a>
+              <a class="button button-outline" href="assets/pages/artikel.html">
+                Lihat Artikel
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="problems container"
+        id="permasalahan"
+        aria-labelledby="problems-title"
+        data-reveal
+      >
+        <p class="section-label">Permasalahan</p>
+        <h2 id="problems-title">
+          Masalah yang Mengancam Hilangnya<br class="problems-title-break" />
+          Warisan Leluhur
+        </h2>
+
+        <div class="problem-grid" data-reveal-child>
+          <article class="problem-card">
+            <button
+              type="button"
+              class="problem-icon"
+              aria-label="Lihat visual Tradisi Terancam Pudar"
+            >
+              <span class="material-symbols-outlined">hourglass_empty</span>
+            </button>
+            <h3>Tradisi Terancam Pudar</h3>
+            <p>
+              Arus modernisasi mengikis tradisi Bali. Tanpa kepedulian,
+              identitas budaya ini bisa hilang ditelan zaman.
+            </p>
+            <div
+              class="problem-media-overlay"
+              role="button"
+              tabindex="-1"
+              aria-label="Tutup visual Tradisi Terancam Pudar"
+            >
+              <img
+                src="assets/img/permasalahan-tradisi-terancam.webp"
+                alt="Visual Tradisi Terancam Pudar"
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article class="problem-card">
+            <button
+              type="button"
+              class="problem-icon"
+              aria-label="Lihat visual Dokumentasi Terfragmentasi"
+            >
+              <span class="material-symbols-outlined"
+                >books_movies_and_music</span
+              >
+            </button>
+            <h3>Dokumentasi Terfragmentasi</h3>
+            <p>
+              Dokumentasi ritual Bali masih tersebar dan acak. Tanpa arsip
+              digital terstruktur, pengetahuan budaya ini rentan hilang.
+            </p>
+            <div
+              class="problem-media-overlay"
+              role="button"
+              tabindex="-1"
+              aria-label="Tutup visual Dokumentasi Terfragmentasi"
+            >
+              <img
+                src="assets/img/permasalahan-dokumentasi-terfragmentasi.webp"
+                alt="Visual Dokumentasi Terfragmentasi"
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article class="problem-card">
+            <button
+              type="button"
+              class="problem-icon"
+              aria-label="Lihat visual Minimnya Sarana Edukasi Interaktif"
+            >
+              <span class="material-symbols-outlined">library_books</span>
+            </button>
+            <h3>Minimnya Sarana Edukasi Interaktif</h3>
+            <p>
+              Cara belajar yang kaku bikin generasi muda malas mendalami budaya
+              Bali. Perlu platform digital interaktif biar mereka tertarik.
+            </p>
+            <div
+              class="problem-media-overlay"
+              role="button"
+              tabindex="-1"
+              aria-label="Tutup visual Minimnya Sarana Edukasi Interaktif"
+            >
+              <img
+                src="assets/img/permasalahan-edukasi-interaktif.webp"
+                alt="Visual Minimnya Sarana Edukasi Interaktif"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="uses container"
+        id="kegunaan"
+        aria-labelledby="uses-title"
+        data-reveal
+      >
+        <p class="section-label">Kegunaan Sekala</p>
+        <h2 id="uses-title">
+          Solusi Cerdas untuk Menghidupkan<br class="uses-title-break" />
+          Kembali Tradisi Budaya Bali
+        </h2>
+
+        <div class="uses-layout">
+          <div
+            class="use-tabs"
+            role="tablist"
+            aria-label="Kegunaan Sekala"
+            aria-orientation="vertical"
+            data-reveal-child
+          >
+            <button
+              class="use-tab"
+              id="use-tab-1"
+              type="button"
+              role="tab"
+              aria-controls="use-panel-1"
+              aria-selected="true"
+              tabindex="0"
+            >
+              <span class="use-number">01</span>
+              <span>Mengenal Tradisi</span>
+            </button>
+            <button
+              class="use-tab"
+              id="use-tab-2"
+              type="button"
+              role="tab"
+              aria-controls="use-panel-2"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span class="use-number">02</span>
+              <span>Makna dan Prosesi</span>
+            </button>
+            <button
+              class="use-tab"
+              id="use-tab-3"
+              type="button"
+              role="tab"
+              aria-controls="use-panel-3"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span class="use-number">03</span>
+              <span>Melestarikan Budaya</span>
+            </button>
+          </div>
+
+          <div class="use-panels" data-reveal>
+            <article
+              class="use-panel"
+              id="use-panel-1"
+              role="tabpanel"
+              aria-labelledby="use-tab-1"
+              tabindex="0"
+            >
+              <img
+                class="use-image"
+                src="assets/img/use-tradition.webp"
+                alt="Ilustrasi prosesi budaya Bali dengan para perempuan membawa persembahan"
+                width="1672"
+                height="941"
+                loading="lazy"
+              />
+              <div class="use-content">
+                <h3>Mengenal Tradisi</h3>
+                <p>
+                  Sekala menyediakan arsip budaya interaktif tempat pengguna
+                  mengeksplorasi beragam tradisi Bali dengan cara yang
+                  menyenangkan.
+                </p>
+              </div>
+            </article>
+            <article
+              class="use-panel"
+              id="use-panel-2"
+              role="tabpanel"
+              aria-labelledby="use-tab-2"
+              tabindex="0"
+              hidden
+            >
+              <img
+                class="use-image"
+                src="assets/img/use-process.webp"
+                alt="Ilustrasi beberapa orang mempelajari cara menyiapkan persembahan Bali"
+                width="1672"
+                height="941"
+                loading="lazy"
+              />
+              <div class="use-content">
+                <h3>Makna dan Prosesi</h3>
+                <p>
+                  Kenali makna di balik setiap prosesi, simbol, dan perlengkapan
+                  upacara melalui cerita budaya yang disajikan dengan jelas.
+                </p>
+              </div>
+            </article>
+            <article
+              class="use-panel"
+              id="use-panel-3"
+              role="tabpanel"
+              aria-labelledby="use-tab-3"
+              tabindex="0"
+              hidden
+            >
+              <img
+                class="use-image"
+                src="assets/img/use-preserve.webp"
+                alt="Ilustrasi generasi muda Bali belajar memainkan gamelan bersama pengajar"
+                width="1672"
+                height="941"
+                loading="lazy"
+              />
+              <div class="use-content">
+                <h3>Melestarikan Budaya</h3>
+                <p>
+                  Arsip digital Sekala membantu pengetahuan budaya tetap mudah
+                  ditemukan dan dipelajari oleh generasi berikutnya.
+                </p>
+              </div>
+            </article>
+            <div class="use-transition-cover" aria-hidden="true" hidden></div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="reviews"
+        id="ulasan"
+        aria-labelledby="reviews-title"
+        data-reveal
+      >
+        <div class="reviews-heading container" data-reveal-child>
+          <p class="section-label">Ulasan Pengguna</p>
+          <h2 id="reviews-title">
+            Kisah Nyata Bersama Sekala dalam<br class="reviews-title-break" />
+            Menjaga Warisan Budaya
+          </h2>
+        </div>
+
+        <div
+          class="reviews-viewport"
+          role="region"
+          aria-roledescription="karusel"
+          aria-label="Ulasan pengguna"
+          data-reveal
+        >
+          <div class="reviews-track">
+            <article
+              class="review-card review-card--edge"
+              aria-label="Ulasan 1 dari 5"
+            >
+              <div class="review-art" aria-hidden="true">
+                <img
+                  src="assets/img/review-painter.webp"
+                  alt=""
+                  width="960"
+                  height="536"
+                  loading="lazy"
+                  decoding="async"
+                /><span class="material-symbols-outlined review-quote-icon"
+                  >format_quote</span
+                >
+              </div>
+              <blockquote>
+                Saat mencari referensi untuk berkarya, aku suka membaca cerita
+                tradisi Bali di Sekala. Penjelasannya ringan dan mudah dipahami.
+              </blockquote>
+              <div class="review-author">
+                <p>Widya Maharani</p>
+                <span>Seniman</span>
+              </div>
+            </article>
+
+            <article class="review-card" aria-label="Ulasan 2 dari 5">
+              <div class="review-art" aria-hidden="true">
+                <img
+                  src="assets/img/review-student.webp"
+                  alt=""
+                  width="960"
+                  height="536"
+                  loading="lazy"
+                  decoding="async"
+                /><span class="material-symbols-outlined review-quote-icon"
+                  >format_quote</span
+                >
+              </div>
+              <blockquote>
+                Arsip digital tradisi budayanya lengkap banget. Cocok untuk anak
+                muda yang mau mendalami budaya Bali tanpa terkesan kaku
+              </blockquote>
+              <div class="review-author">
+                <p>Agus Aryawan</p>
+                <span>Pelajar SMP</span>
+              </div>
+            </article>
+
+            <article class="review-card is-active" aria-label="Ulasan 3 dari 5">
+              <div class="review-art" aria-hidden="true">
+                <img
+                  src="assets/img/review-bayu.webp"
+                  alt=""
+                  width="960"
+                  height="540"
+                  loading="lazy"
+                  decoding="async"
+                /><span class="material-symbols-outlined review-quote-icon"
+                  >format_quote</span
+                >
+              </div>
+              <blockquote>
+                Lewat website Sekala, aku nggak cuma sekadar nonton pertunjukan
+                seni pas ke Bali, tapi jadi beneran paham sejarah dan filosofi
+                di balik tiap tradisi adat dan ritual khas Bali.
+              </blockquote>
+              <div class="review-author">
+                <p>Bayu Pratama</p>
+                <span>Pelajar SMA</span>
+              </div>
+            </article>
+
+            <article class="review-card" aria-label="Ulasan 4 dari 5">
+              <div class="review-art" aria-hidden="true">
+                <img
+                  src="assets/img/review-putri.webp"
+                  alt=""
+                  width="960"
+                  height="536"
+                  loading="lazy"
+                  decoding="async"
+                /><span class="material-symbols-outlined review-quote-icon"
+                  >format_quote</span
+                >
+              </div>
+              <blockquote>
+                Sangat membantu buat nyari referensi dokumentasi tradisi adat
+                yang valid. Penjelasan prosesinya runtut dan gampang dipahami.
+              </blockquote>
+              <div class="review-author">
+                <p>Putri Anggreni</p>
+                <span>Mahasiswa</span>
+              </div>
+            </article>
+
+            <article
+              class="review-card review-card--edge"
+              aria-label="Ulasan 5 dari 5"
+            >
+              <div class="review-art" aria-hidden="true">
+                <img
+                  src="assets/img/review-artisan.webp"
+                  alt=""
+                  width="960"
+                  height="536"
+                  loading="lazy"
+                  decoding="async"
+                /><span class="material-symbols-outlined review-quote-icon"
+                  >format_quote</span
+                >
+              </div>
+              <blockquote>
+                Awalnya aku bingung dengan makna beberapa ritual Bali. Setelah
+                membaca penjelasannya di Sekala, aku jadi lebih paham cerita di
+                baliknya.
+              </blockquote>
+              <div class="review-author">
+                <p>Yoga Pradipta</p>
+                <span>Pekerja</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div
+          class="reviews-controls"
+          role="group"
+          aria-label="Navigasi ulasan"
+          data-reveal
+        >
+          <button
+            class="reviews-arrow"
+            type="button"
+            data-review-direction="-1"
+            aria-label="Ulasan sebelumnya"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >chevron_left</span
+            >
+          </button>
+          <div class="reviews-dots" role="group" aria-label="Pilih ulasan">
+            <button
+              type="button"
+              aria-label="Tampilkan ulasan pertama"
+              aria-current="false"
+            ></button>
+            <button
+              type="button"
+              aria-label="Tampilkan ulasan Agus Aryawan"
+              aria-current="false"
+            ></button>
+            <button
+              type="button"
+              aria-label="Tampilkan ulasan Bayu Pratama"
+              aria-current="true"
+            ></button>
+            <button
+              type="button"
+              aria-label="Tampilkan ulasan Putri Anggreni"
+              aria-current="false"
+            ></button>
+            <button
+              type="button"
+              aria-label="Tampilkan ulasan Yoga Pradipta"
+              aria-current="false"
+            ></button>
+          </div>
+          <button
+            class="reviews-arrow"
+            type="button"
+            data-review-direction="1"
+            aria-label="Ulasan berikutnya"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >chevron_right</span
+            >
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="about container"
+        id="tentang-kami"
+        aria-labelledby="about-title"
+        data-reveal
+      >
+        <p class="section-label">Tentang Kami</p>
+        <div class="about-heading" data-reveal-child>
+          <h2 id="about-title">
+            Mewujudkan Kelestarian Tradisi<br class="about-title-break" />
+            &amp; Budaya Bali.
+          </h2>
+          <a class="button button-dark about-cta" href="#"
+            >Lihat Selengkapnya</a
+          >
+        </div>
+
+        <div class="about-layout" data-reveal-child>
+          <figure class="about-feature">
+            <img
+              src="assets/img/about-temple.webp"
+              alt="Ilustrasi prosesi di pura Bali dengan gapura batu, payung upacara, dan umat yang membawa persembahan"
+              width="1122"
+              height="1402"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="about-feature-name">Sekala</span>
+              <p>
+                Sekala hadir untuk mendokumentasikan dan menghidupkan kembali
+                tradisi Bali. Lewat narasi dan visual bermakna, kami mengajak
+                generasi muda menjaga keberlanjutan budaya Bali di era modern.
+              </p>
+            </figcaption>
+          </figure>
+
+          <div class="about-details">
+            <div class="about-top-row" data-reveal-child>
+              <article class="about-vision">
+                <h3>Visi</h3>
+                <p>
+                  Menjadi wadah digital utama yang mengabadikan dan mengenalkan
+                  tradisi Bali ke dunia.
+                </p>
+              </article>
+              <img
+                class="about-performance"
+                src="assets/img/about-performance.webp"
+                alt="Pertunjukan budaya Bali pada malam hari dengan Barong dan payung upacara"
+                width="736"
+                height="981"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <ol class="about-goals" data-reveal-child>
+              <li class="about-goal">
+                <span class="about-goal-number" aria-hidden="true">01</span>
+                <p>
+                  Mendokumentasikan setiap tradisi, filosofi, dan upacara budaya
+                  Bali secara otentik.
+                </p>
+              </li>
+              <li class="about-goal">
+                <span class="about-goal-number" aria-hidden="true">02</span>
+                <p>
+                  Merangkul generasi muda dan penikmat budaya untuk merawat
+                  tradisi Bali.
+                </p>
+              </li>
+              <li class="about-goal">
+                <span class="about-goal-number" aria-hidden="true">03</span>
+                <p>
+                  Menjadi jembatan informasi budaya Bali yang terstruktur dan
+                  mudah diakses.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="partners"
+        id="mitra"
+        aria-labelledby="partners-title"
+        data-reveal
+      >
+        <div class="partners-heading container" data-reveal-child>
+          <p class="section-label">Komunitas</p>
+          <h2 id="partners-title">
+            50+ Komunitas Budaya &amp; Seni<br />
+            Berkolaborasi Dengan Kami
+          </h2>
+          <div
+            class="partners-proof"
+            aria-label="10 ribu rating dengan nilai 4,8"
+          >
+            <div class="partners-avatars" aria-hidden="true">
+              <img
+                src="assets/img/mitra-avatar-1.webp"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/img/mitra-avatar-2.webp"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/img/mitra-avatar-3.webp"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="material-symbols-outlined partners-add-icon"
+                >add_2</span
+              >
+            </div>
+            <p><strong>10k rating</strong><small>(4.8)</small></p>
+          </div>
+          <a class="button button-dark partners-cta" href="#"
+            >Gabung Sebagai Kolaborator</a
+          >
+        </div>
+
+        <div
+          class="partners-marquee"
+          aria-label="Logo komunitas dan mitra Sekala"
+          data-reveal-child
+        >
+          <div
+            class="partners-row"
+            role="region"
+            aria-label="Baris pertama logo komunitas"
+            tabindex="0"
+          >
+            <div class="partners-track">
+              <div class="partners-logo-set">
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-mda.webp"
+                    alt="Majelis Desa Adat Provinsi Bali"
+                    width="474"
+                    height="474"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-kebudayaan-bali.webp"
+                    alt="Logo kebudayaan Bali"
+                    width="474"
+                    height="334"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-pkb.webp"
+                    alt="Pesta Kesenian Bali"
+                    width="500"
+                    height="500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-mgpssr.webp"
+                    alt="Maha Gotra Pasek Sanak Sapta Rsi"
+                    width="634"
+                    height="393"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="partners-row"
+            role="region"
+            aria-label="Baris kedua logo komunitas"
+            tabindex="0"
+          >
+            <div class="partners-track">
+              <div class="partners-logo-set">
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-bentara-budaya-bali.webp"
+                    alt="Bentara Budaya Bali"
+                    width="474"
+                    height="431"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-kemendikbud.webp"
+                    alt="Kementerian Kebudayaan Republik Indonesia"
+                    width="690"
+                    height="362"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    src="assets/img/logo-basabali.webp"
+                    alt="BASAbali"
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="faq container"
+        id="faq"
+        aria-labelledby="faq-title"
+        data-reveal
+      >
+        <div class="faq-intro" data-reveal-child>
+          <h2 id="faq-title">
+            Siap Menyelami<br />Tradisi Bali Lebih<br />Dalam?
+          </h2>
+          <p>
+            Jelajahi setiap sudut kebudayaan Bali, pahami makna di balik ritual
+            tradisi warisan leluhur, dan nikmati sajian visual otentik yang
+            membawa tradisi Bali lebih dekat denganmu.
+          </p>
+          <a class="button button-dark" href="#tentang-kami"
+            >Lihat Selengkapnya</a
+          >
+        </div>
+
+        <div class="faq-list" data-reveal-child>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-number">01</span
+              ><span
+                >Apakah semua konten di Sekala dapat diakses secara
+                gratis?</span
+              ><span class="faq-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-panel-wrapper">
+              <div class="faq-panel">
+                <p>
+                  Ya, 100% gratis. Seluruh arsip dokumentasi, narasi sejarah,
+                  dan penjelasan tradisi di Sekala dapat diakses oleh publik
+                  tanpa dipungut biaya.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-number">02</span
+              ><span
+                >Informasi tradisi budaya apa saja yang ada di website
+                Sekala?</span
+              ><span class="faq-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-panel-wrapper">
+              <div class="faq-panel">
+                <p>
+                  Di Sekala, Anda dapat menemukan penjelasan lengkap mengenai
+                  berbagai tradisi yang ada di Bali lebih dalam, mulai dari
+                  pengenalan tradisinya, sejarah dan asal-usul, tujuan, makna
+                  dan filosofi, prosesi pelaksanaan tradisi, pelestarian, hingga
+                  dokumentasi galeri tradisi kebudayaan Bali tersebut.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-number">03</span
+              ><span>Apakah informasi di Sekala terverifikasi dan akurat?</span
+              ><span class="faq-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-panel-wrapper">
+              <div class="faq-panel">
+                <p>
+                  Kami berupaya menyajikan informasi yang jelas. Untuk keperluan
+                  rujukan, periksa sumber pada konten terkait dan konfirmasikan
+                  dengan pelaku budaya setempat.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-number">04</span
+              ><span
+                >Siapa saja yang dapat menggunakan atau mengakses Sekala?</span
+              ><span class="faq-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-panel-wrapper">
+              <div class="faq-panel">
+                <p>
+                  Sekala terbuka untuk semua orang ,mulai dari masyarakat umum,
+                  generasi muda Bali, wisatawan, akademisi, hingga penikmat
+                  budaya dari seluruh dunia yang ingin mengenal Bali lebih
+                  dalam.
+                </p>
+              </div>
+            </div>
+          </details>
+          <details class="faq-item is-expanded" open>
+            <summary>
+              <span class="faq-number">05</span
+              ><span>Apakah saya bisa berkolaborasi dengan Sekala?</span
+              ><span class="faq-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-panel-wrapper">
+              <div class="faq-panel">
+                <p>
+                  Tentu saja! Kami sangat terbuka untuk berkolaborasi dengan
+                  sanggar seni, fotografer budaya, penulis, maupun komunitas
+                  lokal. Anda dapat menghubungi kami melalui tombol "Gabung
+                  Sebagai Kolaborator" atau halaman Kontak.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer" data-reveal>
+      <div class="footer-inner container" data-reveal-child>
+        <div class="footer-top">
+          <div class="footer-lead">
+            <p>
+              Sekala melestarikan dan memperkenalkan kekayaan tradisi serta
+              budaya Bali melalui jelajah wilayah interaktif bagi generasi
+              mendatang.
+            </p>
+            <a class="button button-outline" href="#kegunaan"
+              >Jelajahi Sekala</a
+            >
+          </div>
+          <div class="footer-social">
+            <p>Ikuti Kami</p>
+            <div
+              class="footer-social-icons"
+              aria-label="Kanal media sosial Sekala"
+            >
+              <span role="img" aria-label="Facebook"
+                ><i class="bi bi-facebook" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="X"
+                ><i class="bi bi-twitter-x" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="YouTube"
+                ><i class="bi bi-youtube" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="Instagram"
+                ><i class="bi bi-instagram" aria-hidden="true"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-nav">
+            <div class="footer-column">
+              <h3>Beranda</h3>
+              <a href="#permasalahan">Permasalahan</a>
+              <a href="#kegunaan">Kegunaan</a>
+              <a href="#ulasan">Testimoni</a>
+              <a href="#tentang-kami">Tentang Kami</a>
+              <a href="#mitra">Mitra Kami</a>
+            </div>
+            <div class="footer-column">
+              <h3>Wilayah</h3>
+              <span>Denpasar</span><span>Jembrana</span><span>Tabanan</span
+              ><span>Badung</span><span>Gianyar</span><span>Klungkung</span
+              ><span>Bangli</span><span>Karangasem</span><span>Buleleng</span>
+            </div>
+            <div class="footer-column">
+              <h3>Artikel</h3>
+              <a href="assets/pages/artikel.html">Daftar Artikel</a>
+              <a href="assets/pages/detail-artikel.html">Detail Artikel</a>
+            </div>
+            <div class="footer-column">
+              <h3>Hubungi Kami</h3>
+              <span>Pusat Bantuan</span>
+              <a href="#faq">FAQ</a>
+              <span>Kebijakan Privasi</span><span>Syarat &amp; Ketentuan</span>
+            </div>
+          </div>
+          <form class="footer-newsletter" novalidate>
+            <label for="newsletter-email"
+              >Dapatkan Informasi Tradisi Budaya Bali</label
+            >
+            <div class="footer-newsletter-fields">
+              <input
+                id="newsletter-email"
+                type="email"
+                autocomplete="email"
+                placeholder="Masukkan alamat emailmu ..."
+              />
+              <button type="submit" class="button button-dark">Kirim</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="footer-credit">
+          <p>© 2026 Sekala. Semua Hak Cipta Dilindungi</p>
+          <p>Desain Oleh Kala Pusing</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

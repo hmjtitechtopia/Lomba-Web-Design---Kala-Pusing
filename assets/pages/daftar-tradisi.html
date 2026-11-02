@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jelajahi daftar tradisi dari wilayah Bali bersama Sekala."
+    />
+    <title>Daftar Tradisi Badung - Sekala</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&amp;display=block"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.26/dist/lenis.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css?v=about-performance-size" />
+    <link rel="stylesheet" href="../css/daftar-tradisi.css" />
+    <link rel="stylesheet" href="../css/home-return.css" />
+    <link rel="stylesheet" href="../css/chatbot.css?v=3d-model-7" />
+    <script>
+      try {
+        const entry = sessionStorage.getItem("sekala:route-entry");
+        if (
+          (entry === location.pathname || entry === "*") &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          document.documentElement.classList.add("is-entering-page");
+          setTimeout(
+            () =>
+              document.documentElement.classList.remove(
+                "is-entering-page",
+                "is-revealing-page",
+              ),
+            4000,
+          );
+        }
+      } catch {
+        /* Fallback kalau sessionStorage diblokir browser */
+      }
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script
+      src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"
+      defer
+    ></script>
+    <script src="../js/script.js?v=faq-smooth" defer></script>
+    <script src="../js/home-return.js" defer></script>
+    <script src="../js/daftar-tradisi.js" defer></script>
+    <script type="module" src="../js/chatbot.js?v=3d-model-7"></script>
+  </head>
+  <body class="tradisi-body">
+    <div class="route-entry-curtain" aria-hidden="true"></div>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigasi utama">
+        <a
+          class="brand"
+          href="../../index.html"
+          aria-label="Sekala, ke beranda"
+        >
+          <span class="material-symbols-outlined brand-icon" aria-hidden="true"
+            >temple_hindu</span
+          >
+          <span>Sekala</span>
+        </a>
+        <div class="nav-links" id="mobile-nav-links">
+          <a href="../../index.html">Beranda</a>
+          <a href="wilayah.html" aria-current="page">Wilayah</a>
+          <a href="artikel.html">Artikel</a>
+        </div>
+        <a class="button button-dark nav-button" href="wilayah.html"
+          >Jelajahi</a
+        >
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-controls="mobile-nav-links"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-lines" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="tradisi-page container" data-reveal>
+      <nav class="tradisi-breadcrumb" aria-label="Jejak halaman">
+        <a href="wilayah.html">Wilayah</a>
+        <span aria-hidden="true">&gt;</span>
+        <span data-region-name aria-current="page">Badung</span>
+      </nav>
+
+      <div class="tradisi-header">
+        <h1>Daftar Tradisi</h1>
+        <div class="tradisi-search" data-tradisi-search>
+          <span
+            class="material-symbols-outlined tradisi-search__icon"
+            aria-hidden="true"
+            >search</span
+          >
+          <input
+            type="search"
+            id="tradisi-search-input"
+            class="tradisi-search__input"
+            placeholder="Cari tradisi..."
+            aria-label="Cari tradisi"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            class="tradisi-search__clear"
+            id="tradisi-search-clear"
+            aria-label="Hapus kata kunci pencarian"
+            hidden
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="tradisi-no-results"
+        id="tradisi-no-results"
+        hidden
+        aria-live="polite"
+      >
+        <span
+          class="material-symbols-outlined tradisi-no-results__icon"
+          aria-hidden="true"
+          >search_off</span
+        >
+        <h2>Tradisi tidak ditemukan</h2>
+        <p>
+          Tidak ada tradisi yang cocok dengan kata kunci "<span
+            id="tradisi-no-results-query"
+          ></span
+          >".
+        </p>
+        <button
+          type="button"
+          class="button button-outline"
+          id="tradisi-reset-search"
+        >
+          Reset Pencarian
+        </button>
+      </div>
+
+      <section
+        class="tradisi-grid"
+        aria-label="Tradisi di Badung"
+        data-tradisi-grid
+        data-reveal-child
+      >
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/siat-tipat-bantal-utama.webp"
+              alt="Ilustrasi warga mengikuti tradisi Siat Tipat Bantal"
+              width="2688"
+              height="1568"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Siat Tipat Bantal</h2>
+            <p class="tradisi-card__description">
+              Tradisi saling melempar ketupat dan bantal sebagai simbol
+              kesuburan dan kesejahteraan, yang berasal dari Desa Kapal, Badung.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=siat-tipat-bantal"
+              aria-label="Jelajahi Siat Tipat Bantal"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/siat-yeh.webp"
+              alt="Ilustrasi peserta Siat Yeh saling menyiram air"
+              width="2688"
+              height="1568"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Siat Yeh</h2>
+            <p class="tradisi-card__description">
+              Tradisi perang air saat Ngembak Geni yang mempertemukan dua sumber
+              air di Banjar Teba, Desa Adat Jimbaran, Badung.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=siat-yeh"
+              aria-label="Jelajahi Siat Yeh"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/kebo-dongol.webp"
+              alt="Ilustrasi arak-arakan Kebo Dongol pada malam hari"
+              width="2688"
+              height="1568"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Kebo Dongol</h2>
+            <p class="tradisi-card__description">
+              Tradisi sakral berupa persembahan berbentuk kerbau, terbuat dari
+              ketan dalam upacara keagamaan, berasal Desa Adat Kapal, Kecamatan
+              Mengwi, Badung.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=kebo-dongol"
+              aria-label="Jelajahi Kebo Dongol"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/mekotek.webp"
+              alt="Ilustrasi warga membentuk kerucut dari tongkat dalam tradisi Mekotek"
+              width="2688"
+              height="1568"
+              loading="lazy"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Mekotek</h2>
+            <p class="tradisi-card__description">
+              Tradisi mengadu tongkat kayu sebagai simbol persatuan dan ritual
+              memohon keselamatan, berasal dari Desa Munggu, Kecamatan Mengwi,
+              Kabupaten Badung.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=mekotek"
+              aria-label="Jelajahi Mekotek"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/megegobog.webp"
+              alt="Ilustrasi iringan warga dalam tradisi Megegobog"
+              width="2752"
+              height="1536"
+              loading="lazy"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Megegobog</h2>
+            <p class="tradisi-card__description">
+              Tradisi pemuda Desa Adat Jimbaran menjelang Nyepi. Tiga kelompok
+              berjalan dari arah berbeda, bertemu untuk melakukan prosesi api,
+              lalu menampilkan seni dan budaya.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=megegobog"
+              aria-label="Jelajahi Megegobog"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+        <article class="tradisi-card">
+          <div class="tradisi-photo">
+            <img
+              src="../img/siat-geni.webp"
+              alt="Ilustrasi tradisi Siat Geni dengan percikan api"
+              width="2400"
+              height="1792"
+              loading="lazy"
+            />
+          </div>
+          <div class="tradisi-card__content">
+            <p class="tradisi-card__eyebrow">Tradisi</p>
+            <h2>Siat Geni</h2>
+            <p class="tradisi-card__description">
+              Tradisi perang api di Desa Adat Tuban, Kecamatan Kuta, Badung,
+              sebagai bagian dari upacara untuk melepas kekotoran diri.
+            </p>
+            <a
+              class="button button-dark tradisi-card__button"
+              href="detail-tradisi.html?tradisi=siat-geni"
+              aria-label="Jelajahi Siat Geni"
+              >Jelajahi</a
+            >
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="tradisi-empty"
+        data-tradisi-empty
+        data-reveal-child
+        hidden
+        aria-live="polite"
+      >
+        <p class="tradisi-empty__label">Wilayah Bali</p>
+        <h2 data-empty-heading></h2>
+        <p data-empty-message></p>
+        <a class="button button-outline" href="wilayah.html"
+          >Kembali ke peta wilayah</a
+        >
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer" data-reveal>
+      <div class="footer-inner container" data-reveal-child>
+        <div class="footer-top">
+          <div class="footer-lead">
+            <p>
+              Sekala melestarikan dan memperkenalkan kekayaan tradisi serta
+              budaya Bali melalui jelajah wilayah interaktif bagi generasi
+              mendatang.
+            </p>
+            <a class="button button-outline" href="wilayah.html"
+              >Jelajahi Wilayah</a
+            >
+          </div>
+          <div class="footer-social">
+            <p>Ikuti Kami</p>
+            <div
+              class="footer-social-icons"
+              aria-label="Kanal media sosial Sekala"
+            >
+              <span role="img" aria-label="Facebook"
+                ><i class="bi bi-facebook" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="X"
+                ><i class="bi bi-twitter-x" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="YouTube"
+                ><i class="bi bi-youtube" aria-hidden="true"></i
+              ></span>
+              <span role="img" aria-label="Instagram"
+                ><i class="bi bi-instagram" aria-hidden="true"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-nav">
+            <div class="footer-column">
+              <h3>Beranda</h3>
+              <a href="../../index.html#permasalahan">Permasalahan</a>
+              <a href="../../index.html#kegunaan">Kegunaan</a>
+              <a href="../../index.html#ulasan">Testimoni</a>
+              <a href="../../index.html#tentang-kami">Tentang Kami</a>
+              <a href="../../index.html#mitra">Mitra Kami</a>
+            </div>
+            <div class="footer-column">
+              <h3>Wilayah</h3>
+              <a href="daftar-tradisi.html?wilayah=denpasar">Denpasar</a>
+              <a href="daftar-tradisi.html?wilayah=jembrana">Jembrana</a>
+              <a href="daftar-tradisi.html?wilayah=tabanan">Tabanan</a>
+              <a href="daftar-tradisi.html?wilayah=badung">Badung</a>
+              <a href="daftar-tradisi.html?wilayah=gianyar">Gianyar</a>
+              <a href="daftar-tradisi.html?wilayah=klungkung">Klungkung</a>
+              <a href="daftar-tradisi.html?wilayah=bangli">Bangli</a>
+              <a href="daftar-tradisi.html?wilayah=karangasem">Karangasem</a>
+              <a href="daftar-tradisi.html?wilayah=buleleng">Buleleng</a>
+            </div>
+            <div class="footer-column">
+              <h3>Artikel</h3>
+              <a href="artikel.html">Daftar Artikel</a>
+              <a href="detail-artikel.html">Detail Artikel</a>
+            </div>
+            <div class="footer-column">
+              <h3>Hubungi Kami</h3>
+              <span>Pusat Bantuan</span>
+              <a href="../../index.html#faq">FAQ</a>
+              <span>Kebijakan Privasi</span><span>Syarat &amp; Ketentuan</span>
+            </div>
+          </div>
+          <form class="footer-newsletter" novalidate>
+            <label for="newsletter-email"
+              >Dapatkan Informasi Tradisi Budaya Bali</label
+            >
+            <div class="footer-newsletter-fields">
+              <input
+                id="newsletter-email"
+                type="email"
+                autocomplete="email"
+                placeholder="Masukkan alamat emailmu ..."
+              />
+              <button type="submit" class="button button-dark">Kirim</button>
+            </div>
+          </form>
+        </div>
+        <div class="footer-credit">
+          <p>© 2026 Sekala. Semua Hak Cipta Dilindungi</p>
+          <p>Desain Oleh Kala Pusing</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

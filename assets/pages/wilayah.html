@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jelajahi delapan kabupaten di Pulau Bali bersama Sekala."
+    />
+    <title>Wilayah - Sekala</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&amp;display=block"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="../css/style.css?v=about-performance-size" />
+    <link rel="stylesheet" href="../css/wilayah.css?v=bali-popup-title-1" />
+    <link rel="stylesheet" href="../css/home-return.css" />
+    <script>
+      try {
+        const entry = sessionStorage.getItem("sekala:route-entry");
+        if (
+          (entry === location.pathname || entry === "*") &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          document.documentElement.classList.add("is-entering-page");
+          setTimeout(
+            () =>
+              document.documentElement.classList.remove(
+                "is-entering-page",
+                "is-revealing-page",
+              ),
+            4000,
+          );
+        }
+      } catch {
+        /* Fallback kalau sessionStorage diblokir browser */
+      }
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="../js/script.js?v=faq-smooth" defer></script>
+    <script src="../js/home-return.js" defer></script>
+    <script src="../js/wilayah-popup.js" defer></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+      defer
+    ></script>
+    <script src="../js/wilayah-map2d.js" defer></script>
+    <script
+      type="module"
+      src="../js/bali-island.js?v=bali-regency-pins-1"
+    ></script>
+  </head>
+  <body class="wilayah-body">
+    <div class="route-entry-curtain" aria-hidden="true"></div>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigasi utama">
+        <a
+          class="brand"
+          href="../../index.html"
+          aria-label="Sekala, ke beranda"
+        >
+          <span class="material-symbols-outlined brand-icon" aria-hidden="true"
+            >temple_hindu</span
+          >
+          <span>Sekala</span>
+        </a>
+        <div class="nav-links" id="mobile-nav-links">
+          <a href="../../index.html">Beranda</a>
+          <a href="#wilayah" aria-current="page">Wilayah</a>
+          <a href="artikel.html">Artikel</a>
+        </div>
+        <a class="button button-dark nav-button" href="#wilayah">Jelajahi</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-controls="mobile-nav-links"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-lines" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+        </button>
+      </nav>
+    </header>
+    <main class="wilayah-page" id="wilayah">
+      <h1 class="island-sr-only">Jelajah delapan kabupaten di Bali</h1>
+      <div
+        class="bali-island"
+        role="region"
+        aria-label="Pulau Bali. Geser untuk memutar dan cubit atau gulir untuk memperbesar."
+      >
+        <img
+          class="bali-island-poster"
+          src="../img/bali-island-poster.webp?v=sentinel-2016"
+          srcset="
+            ../img/bali-island-poster-mobile.webp?v=sentinel-2016  800w,
+            ../img/bali-island-poster.webp?v=sentinel-2016        1600w
+          "
+          sizes="100vw"
+          alt="Relief Pulau Bali dengan pegunungan, dataran selatan, dan semenanjung Bukit."
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+        />
+        <div
+          class="wilayah-view-switcher"
+          role="radiogroup"
+          aria-label="Pilihan mode tampilan peta"
+        >
+          <button
+            type="button"
+            class="view-switch-btn is-active"
+            data-mode="3d"
+            role="radio"
+            aria-checked="true"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >view_in_ar</span
+            >
+            <span>3D Relief</span>
+          </button>
+          <button
+            type="button"
+            class="view-switch-btn"
+            data-mode="2d"
+            role="radio"
+            aria-checked="false"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >map</span
+            >
+            <span>2D Satelit</span>
+          </button>
+        </div>
+        <div
+          id="bali-map-2d"
+          class="bali-map-2d"
+          aria-label="Peta satelit 2D Pulau Bali"
+        ></div>
+        <div
+          class="bali-compass"
+          role="img"
+          aria-label="Kompas mengikuti arah peta: U utara, T timur, S selatan, B barat."
+        >
+          <svg viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <defs>
+              <g id="bali-compass-major-ray">
+                <path class="bali-compass-halo" d="M0-59 12-12 0 0-12-12Z" />
+                <path class="bali-compass-light" d="M0 0-12-12 0-59Z" />
+                <path class="bali-compass-dark" d="M0 0 0-59 12-12Z" />
+                <path class="bali-compass-edge" d="M0-59 12-12 0 0-12-12Z" />
+              </g>
+              <g id="bali-compass-minor-ray">
+                <path class="bali-compass-halo" d="M0-40 6-6 0 0-6-6Z" />
+                <path class="bali-compass-light" d="M0 0-6-6 0-40Z" />
+                <path class="bali-compass-dark" d="M0 0 0-40 6-6Z" />
+                <path class="bali-compass-edge" d="M0-40 6-6 0 0-6-6Z" />
+              </g>
+              <path id="bali-compass-tick" d="M0-30 0-27.5" />
+            </defs>
+            <g data-compass-rose>
+              <circle class="bali-compass-halo" cx="80" cy="80" r="31" />
+              <circle class="bali-compass-ring" cx="80" cy="80" r="31" />
+              <circle
+                class="bali-compass-inner-ring"
+                cx="80"
+                cy="80"
+                r="28.5"
+              />
+              <g transform="translate(80 80)">
+                <g class="bali-compass-ticks">
+                  <use href="#bali-compass-tick" transform="rotate(15)" />
+                  <use href="#bali-compass-tick" transform="rotate(30)" />
+                  <use href="#bali-compass-tick" transform="rotate(60)" />
+                  <use href="#bali-compass-tick" transform="rotate(75)" />
+                  <use href="#bali-compass-tick" transform="rotate(105)" />
+                  <use href="#bali-compass-tick" transform="rotate(120)" />
+                  <use href="#bali-compass-tick" transform="rotate(150)" />
+                  <use href="#bali-compass-tick" transform="rotate(165)" />
+                  <use href="#bali-compass-tick" transform="rotate(195)" />
+                  <use href="#bali-compass-tick" transform="rotate(210)" />
+                  <use href="#bali-compass-tick" transform="rotate(240)" />
+                  <use href="#bali-compass-tick" transform="rotate(255)" />
+                  <use href="#bali-compass-tick" transform="rotate(285)" />
+                  <use href="#bali-compass-tick" transform="rotate(300)" />
+                  <use href="#bali-compass-tick" transform="rotate(330)" />
+                  <use href="#bali-compass-tick" transform="rotate(345)" />
+                </g>
+                <use href="#bali-compass-minor-ray" transform="rotate(45)" />
+                <use href="#bali-compass-minor-ray" transform="rotate(135)" />
+                <use href="#bali-compass-minor-ray" transform="rotate(225)" />
+                <use href="#bali-compass-minor-ray" transform="rotate(315)" />
+                <use href="#bali-compass-major-ray" />
+                <use href="#bali-compass-major-ray" transform="rotate(90)" />
+                <use href="#bali-compass-major-ray" transform="rotate(180)" />
+                <use href="#bali-compass-major-ray" transform="rotate(270)" />
+              </g>
+            </g>
+            <g class="bali-compass-labels">
+              <text data-compass-label="north" x="80" y="7">U</text>
+              <text data-compass-label="east" x="153" y="80">T</text>
+              <text data-compass-label="south" x="80" y="153">S</text>
+              <text data-compass-label="west" x="7" y="80">B</text>
+            </g>
+          </svg>
+        </div>
+        <div class="bali-island-pins" aria-label="Delapan kabupaten di Bali">
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="jembrana"
+            data-position="-4.2756607,0.09101761,-1.55044825"
+            data-lat="-8.3582"
+            data-lng="114.6369"
+            aria-label="Titik Jembrana, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Jembrana</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="tabanan"
+            data-position="0.0912742,0.13194809,-0.2975405"
+            data-lat="-8.5381"
+            data-lng="115.1239"
+            aria-label="Titik Tabanan, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Tabanan</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="badung"
+            data-position="1.30538507,0.03815749,1.38809878"
+            data-lat="-8.5819"
+            data-lng="115.1771"
+            aria-label="Titik Badung, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Badung</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="gianyar"
+            data-position="2.39199905,0.08840892,0.26977034"
+            data-lat="-8.5435"
+            data-lng="115.3244"
+            aria-label="Titik Gianyar, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Gianyar</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="klungkung"
+            data-position="3.44064063,0.0526823,0.68265222"
+            data-lat="-8.5356"
+            data-lng="115.4045"
+            aria-label="Titik Klungkung, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Klungkung</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="bangli"
+            data-position="3.03628694,0.30675184,-1.79730812"
+            data-lat="-8.4543"
+            data-lng="115.3548"
+            aria-label="Titik Bangli, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Bangli</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="karangasem"
+            data-position="5.05742784,0.29698144,-0.91368255"
+            data-lat="-8.4474"
+            data-lng="115.6074"
+            aria-label="Titik Karangasem, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Karangasem</span></a
+          >
+          <a
+            class="bali-pin"
+            href="daftar-tradisi.html?wilayah=badung"
+            data-regency="buleleng"
+            data-position="-1.18702015,0.01996083,-2.80642652"
+            data-lat="-8.1120"
+            data-lng="115.0882"
+            aria-label="Titik Buleleng, tampilkan tradisi"
+            ><span class="bali-pin-dot" aria-hidden="true"></span
+            ><span class="bali-pin-label">Buleleng</span></a
+          >
+        </div>
+        <aside
+          class="wilayah-popup"
+          id="wilayah-popup"
+          role="dialog"
+          aria-labelledby="wilayah-popup-title"
+          hidden
+        >
+          <div class="wilayah-popup__header">
+            <h2 class="wilayah-popup__title" id="wilayah-popup-title">
+              Daftar Tradisi
+            </h2>
+            <button
+              class="wilayah-popup__close"
+              type="button"
+              aria-label="Tutup daftar tradisi"
+            >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >close</span
+              >
+            </button>
+          </div>
+          <ul class="wilayah-popup__list">
+            <li class="wilayah-popup__card">
+              <img
+                src="../img/siat-tipat-bantal-utama.webp"
+                alt="Ilustrasi warga mengikuti tradisi Siat Tipat Bantal"
+                width="2688"
+                height="1568"
+                loading="lazy"
+              />
+              <div class="wilayah-popup__body">
+                <p class="wilayah-popup__eyebrow">Tradisi</p>
+                <h3>Siat Tipat Bantal</h3>
+                <p>
+                  Tradisi saling melempar ketupat dan bantal sebagai simbol
+                  kesuburan
+                </p>
+              </div>
+            </li>
+            <li class="wilayah-popup__card">
+              <img
+                src="../img/siat-yeh.webp"
+                alt="Ilustrasi peserta Siat Yeh saling menyiram air"
+                width="2688"
+                height="1568"
+                loading="lazy"
+              />
+              <div class="wilayah-popup__body">
+                <p class="wilayah-popup__eyebrow">Tradisi</p>
+                <h3>Siat Yeh</h3>
+                <p>Tradisi perang air yang melambangkan penyucian diri</p>
+              </div>
+            </li>
+            <li class="wilayah-popup__card">
+              <img
+                src="../img/siat-geni.webp"
+                alt="Ilustrasi tradisi Siat Geni dengan percikan api"
+                width="2400"
+                height="1792"
+                loading="lazy"
+              />
+              <div class="wilayah-popup__body">
+                <p class="wilayah-popup__eyebrow">Tradisi</p>
+                <h3>Siat Geni</h3>
+                <p>Tradisi adat unsur api sebagai simbol penyucian</p>
+              </div>
+            </li>
+          </ul>
+          <div class="wilayah-popup__footer">
+            <a
+              class="button button-dark wilayah-popup__button"
+              href="daftar-tradisi.html?wilayah=badung"
+              >Pelajari Selengkapnya</a
+            >
+          </div>
+        </aside>
+        <p class="bali-image-credit">
+          Citra pulau: EOxCloudless
+          <a
+            href="https://cloudless.eox.at/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >https://cloudless.eox.at</a
+          >
+          by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
+          2016 &amp; 2017)<br /><a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CC BY 4.0</a
+          >
+          · Citra dipotong dan diorientasikan ulang; versi ponsel diperkecil.<br />Titik
+          kabupaten: BPS/WFP/OCHA melalui
+          <a
+            href="https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >geoBoundaries</a
+          >
+          (<a
+            href="https://creativecommons.org/licenses/by/3.0/igo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CC BY 3.0 IGO</a
+          >), diolah.
+        </p>
+      </div>
+      <p
+        class="island-sr-only"
+        id="island-status"
+        role="status"
+        aria-live="polite"
+      >
+        Memuat model Pulau Bali.
+      </p>
+    </main>
+    <!-- Atribusi aset peta & 3D:
+         Terrain: USGS SRTM via AWS Terrain Tiles.
+         Garis pantai: OSM via geoBoundaries.
+         Satelit: EOxCloudless 2016 (CC BY 4.0). Detail lisensi: model-3d-bali/SOURCES-original.md -->
+  </body>
+</html>
